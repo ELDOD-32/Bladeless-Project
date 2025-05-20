@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vortex Bladeless Wind Turbine</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      color: #1a1a1a;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(to right, #e0f7fa, #ccf2e9);
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+    header h1 {
+      color: #004d66;
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2em;
+      color: #006b6b;
+    }
+    nav {
+      text-align: center;
+      background: #b2dfdb;
+      padding: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #004d66;
+      font-weight: bold;
+    }
+    section {
+      padding: 50px 20px;
+      max-width: 960px;
+      margin: auto;
+      animation: fadeInUp 1s ease;
+    }
+    h2 {
+      color: #007a99;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    footer {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #666;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 1em;
+    }
+    .contact-form button {
+      padding: 10px 20px;
+      background-color: #007a99;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .image {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .chart {
+      display: block;
+      max-width: 600px;
+      margin: 30px auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vortex Bladeless Wind Turbine</h1>
+    <p>Grade 10 STEM Capstone Project – Sustainable Energy Innovation</p>
+  </header>
+  <nav>
+    <a href="#problem">Problem</a>
+    <a href="#solution">Solution</a>
+    <a href="#prototype">Prototype</a>
+    <a href="#team">Team</a>
+    <a href="#future">Future Ideas</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="problem">
+    <h2>About the Problem</h2>
+    <img src="https://cdn.pixabay.com/photo/2020/06/20/10/20/solar-energy-5319991_960_720.jpg" alt="Energy Problem" class="image">
+    <p>Egypt faces rising energy demands and environmental pollution due to heavy reliance on fossil fuels. Traditional wind turbines are noisy, costly, and not suited for urban or wildlife-sensitive areas.</p>
+  </section>
+
+  <section id="solution">
+    <h2>Our Solution</h2>
+    <img src="https://cdn.pixabay.com/photo/2022/11/15/12/38/renewable-7593424_960_720.jpg" alt="Bladeless Turbine" class="image">
+    <p>We developed a bladeless wind turbine that harnesses wind using vortex-induced vibrations (VIV). The motion powers a slider-crank and rack-pinion system connected to a DC motor, producing 50.3J in 5 minutes. It is compact, bird-safe, quiet, and low-cost.</p>
+  </section>
+
+  <section id="prototype">
+    <h2>Prototype & Testing</h2>
+    <img src="https://cdn.pixabay.com/photo/2020/06/17/11/21/technology-5306883_960_720.jpg" alt="Prototype Testing" class="image">
+    <p>Dimensions: 1.05m height, 0.4m × 0.2m base. The system showed great performance in trials with consistent oscillation and energy generation. Testing involved voltage/current tracking and confirmed the design exceeded the 40J target.</p>
+    <canvas class="chart" id="energyChart" width="600" height="300"></canvas>
+  </section>
+
+  <section id="team">
+    <h2>Meet the Team</h2>
+    <p>Abdel-Salam Ahmed, Hady Khaled, Hamza Mahmoud, Mahmoud Mohamed, Moaaz Helmy</p>
+    <p>STEM High School for Boys – El Obour</p>
+  </section>
+
+  <section id="future">
+    <h2>Recommendations & Future Improvements</h2>
+    <ul>
+      <li>Textured mast for better vortex shedding</li>
+      <li>Damping system for high wind stability</li>
+      <li>Hydrophobic coating to resist dust</li>
+      <li>Integration with buildings or highway structures</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: hady.2124021@stemobour.moe.edu.eg</p>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Group 21101 – STEM El Obour. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('energyChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['0s', '50s', '100s', '150s', '200s', '250s', '300s'],
+        datasets: [{
+          label: 'Energy (Joules)',
+          data: [0, 9.7, 16.1, 28.4, 37.2, 44.1, 50.3],
+          borderColor: '#007a99',
+          backgroundColor: 'rgba(0, 122, 153, 0.1)',
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Energy Output Over Time (5 min)',
+            color: '#333',
+            font: { size: 16 }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
